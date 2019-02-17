@@ -206,12 +206,11 @@ http://www.rtklib.com/rtklib_support.htmを
 -------------------------------------------------- ------------------------------
 (ここまでgoogle翻訳による日本語訳）
 
-Raspberry　Pi　でのインストール手順
+Raspberry　Pi3　でのインストール手順
 $ git clone https://github.com/mnltake/RTKLIB.git
-$ cd RTKLIB
-$ cd app
+$ cd RTKLIB/app
 $ chmod 755 makeall.sh
-$ ./makeall.sh
+$ ./makeall.sh -j8
 $ cd rtkrcv/gcc/
 $ chmod 755 rtkstart.sh
 $ chmod 755 rtkshut.sh   
