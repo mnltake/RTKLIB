@@ -1,206 +1,217 @@
---------------------------------------------------------------------------------
+-------------------------------------------------- ------------------------------
 
-           RTKLIB: An Open Source Program Package for GNSS Positioning
+           RTKLIB：GNSSポジショニングのためのオープンソースプログラムパッケージ
 
---------------------------------------------------------------------------------
+-------------------------------------------------- ------------------------------
 
-OVERVIEW
+概要
 
-RTKLIB is an open source program package for standard and precise positioning
-with GNSS (global navigation satellite system). RTKLIB consists of a portable
-program library and several APs (application programs) utilizing the library.
-The features of RTKLIB are:
+RTKLIBは標準的で正確な位置決めのためのオープンソースプログラムパッケージです。
+GNSS（全地球的航法衛星システム）を使って。RTKLIBはポータブルで構成されています
+プログラムライブラリとそのライブラリを利用する複数のAP（アプリケーションプログラム）。
+RTKLIBの機能は次のとおりです。
 
-(1) It supports standard and precise positioning algorithms with:
+（1）標準的で正確な位置決めアルゴリズムをサポートします。
     
-    GPS, GLONASS, Galileo, QZSS, BeiDou and SBAS
+    GPS、GLONASS、Galileo、QZSS、BeiDou、SBAS
     
-(2) It supports various positioning modes with GNSS for both real-time- and
-    post-processing:
+（2）GNSSを使用してリアルタイムとリアルタイムの両方でさまざまな測位モードをサポート
+    後処理：
     
-    Single, DGPS/DGNSS, Kinematic, Static, Moving-Baseline, Fixed,
-    PPP-Kinematic, PPP-Static and PPP-Fixed.
+    シングル、DGPS / DGNSS、キネマティック、スタティック、ムービングベースライン、固定、
+    PPPキネマティック、PPPスタティック、およびPPP固定。
     
-(3) It supports many standard formats and protocols for GNSS:
+（3）GNSS用の多くの標準フォーマットとプロトコルをサポートしています。
     
-    RINEX 2.10,2.11,2.12 OBS/NAV/GNAV/HNAV/LNAV/QNAV, RINEX 3.00,3.01,3.02
-    OBS/NAV,RINEX 3.02 CLK,RTCM ver.2.3,RTCM ver.3.1 (with amendment 1-5),
-    RTCM ver.3.2, BINEX, NTRIP 1.0, NMEA 0183, SP3-c, ANTEX 1.4, IONEX 1.0,
-    NGS PCV and EMS 2.0.
+    RINEX 2.10、2.11、2.12 OBS / NAV / GNAV / HNAV / LNAV / QNAV、RINEX 3.00、3.01、3.02
+    OBS / NAV、RINEX 3.02 CLK、RTCM ver.2.3、RTCM ver.3.1（修正1-5を含む）、
+    RTCM ver.3.2、BINEX、NTRIP 1.0、NMEA 0183、SP3-c、ANTEX 1.4、IONEX 1.0、
+    NGS PCVとEMS 2.0
     
-(4) It supports several GNSS receivers' proprietary messages:
+（4）いくつかのGNSS受信者独自のメッセージをサポートします。
     
-    NovAtel: OEM4/V/6,OEM3,OEMStar,Superstar II, Hemisphere: Eclipse,Crescent,
-    u-blox: LEA-4T/5T/6T, SkyTraq: S1315F, JAVAD GRIL/GREIS, Furuno
-    GW-10-II/III and NVS NV08C BINR.
+    NovAtel：OEM4 / V / 6、OEM3、OEMStar、Superstar II、半球：Eclipse、Crescent、
+    u-blox：LEA-4T / 5T / 6T、SkyTraq：S1315F、JAVAD GRIL / GREIS、古野
+    GW-10-II / IIIおよびNVS NV08C BINR。
     
-(5) It supports external communication via:
+（5）次による外部通信をサポートします。
     
-    Serial, TCP/IP, NTRIP, local log file (record and playback) and FTP/HTTP
-    (automatic download).
+    シリアル、TCP / IP、NTRIP、ローカルログファイル（記録と再生）およびFTP / HTTP
+    （自動ダウンロード）
     
-(6) It provides many library functions and APIs (application program
-    interfaces):
+（6）多くのライブラリ関数とAPI（アプリケーションプログラム）を提供します
+    インターフェース）：
     
-    Satellite and navigation system functions, matrix and vector functions,
-    time and string functions, coordinates transformation, input and output
-    functions, debug trace functions, platform dependent functions,
-    positioning models, atmosphere models, antenna models, earth tides models,
-    geoid models, datum transformation, RINEX functions, ephemeris and clock
-    functions, precise ephemeris and clock functions, receiver raw data
-    functions, RTCM functions, solution functions, Google Earth KML converter,
-    SBAS functions, options functions, stream data input and output functions,
-    integer ambiguity resolution, standard positioning, precise positioning,
-    post-processing positioning, stream server functions, RTK server
-    functions, downloader functions.
+    衛星とナビゲーションシステムの機能、行列とベクトルの機能、
+    時間と文字列関数、座標変換、入力と出力
+    機能、デバッグトレース機能、プラットフォーム依存機能、
+    測位モデル、大気モデル、アンテナモデル、地球潮汐モデル、
+    ジオイドモデル、測地基準系変換、RINEX関数、天体暦および時計
+    機能、正確なエフェメリスおよび時計機能、受信機生データ
+    機能、RTCM機能、ソリューション機能、Google Earth KMLコンバーター、
+    SBAS機能、オプション機能、ストリームデータ入出力機能、
+    整数のあいまいさの解決、標準的な位置、正確な位置、
+    後処理測位、ストリームサーバ機能、RTKサーバ
+    機能、ダウンローダ機能。
     
-(7) It includes the following GUI (graphical user interface) and CUI
-    (command-line user interface) APs.
+（7）以下のGUI（グラフィカルユーザインタフェース）とCUIが含まれています
+    （コマンドラインユーザインターフェイス）AP。
     
-    --------------------------------------------------------------------------
-        Function                     GUI AP          CUI AP
-    --------------------------------------------------------------------------
-    (a) AP Launcher                  RTKLAUNCH       -
-    (b) Real-Time Positioning        RTKNAVI         RTKRCV
-    (c) Communication Server         STRSVR          STR2STR
-    (d) Post-Processing Analysis     RTKPOST         RNX2RTKP
-    (e) RINEX Converter              RTKCONV         CONVBIN
-    (f) Plot Solutions and Obs Data  RTKPLOT         -
-    (g) Downloder of GNSS Data       RTKGET          -
-    (h) NTRIP Browser                NTRIPSRCBROWS   -
-    --------------------------------------------------------------------------
+    -------------------------------------------------- ------------------------
+        機能GUI AP CUI AP
+    -------------------------------------------------- ------------------------
+    （a）APランチャーRTKLAUNCH  - 
+    （b）リアルタイム測位RTKNAVI RTKRCV
+    （c）通信サーバSTRSVR STR2STR
+    （d）後処理分析RTKPOST RNX2RTKP
+    （e）RINEXコンバータRTKCONV CONVBIN
+    （f）解と観測データのプロットRTKPLOT  - 
+    （g）GNSSデータのダウンロードRTKGET  - 
+    （h）NTRIPブラウザNTRIPSRCBROWS  - 
+    -------------------------------------------------- ------------------------
 
-(8) All of the executable binary APs for Windows are included in the package as
-    well as whole source programs of the library and the APs.
+（8）Windows用のすべての実行可能バイナリAPは、次のようにパッケージに含まれています。
+    ライブラリとAPのソースプログラム全体。
 
---------------------------------------------------------------------------------
+-------------------------------------------------- ------------------------------
 
-SYSTEM REQUIEREMENTS
+システム要件
 
-The executable binary GUI and CUI APs included in the package require Microsoft
-Windows environment. On the other OS or environment, you have to compile and
-build CUI APs by yourself.
-All of the library functions and APIs were written in ANSI C (C89). The library
-internally uses winsock and WIN32 thread for Windows with the compiler option
--DWIN32 and the standard socket and pthread (POSIX thread) for Linux/UNIX
-without any option. By setting the compiler option -DLAPACK or -DMKL, the
-library uses LAPACK/BLAS [36] or Intel MKL for fast matrix computation. The CUI
-APs were written in ANSI C. The library and CUI APs can be built on many
-environments like gcc on Linux. The GUI APs were written in C++ and utilize
-Embarcadero/Borland VCL (visual component library) for GUI toolkits. All of the
-executable binary APs in the package were built by Embarcadero C++ builder XE2
-Starter Edition on Windows 7.
-The executable GUI APs were tested on Windows 7 (64bit). The CUI APs were also
-built and tested on Ubuntu 11.04 Linux and x86 CPU.
+パッケージに含まれている実行可能バイナリGUIおよびCUI APにはMicrosoftが必要です。
+Windows環境 他のOSや環境では、コンパイルして
+自分でCUI APを構築します。
+ライブラリ関数とAPIはすべてANSI C（C89）で書かれています。図書館
+Windows用にwinsockとWIN32スレッドを内部的にコンパイラオプションで使用する
+Linux / UNIX用の-DWIN32および標準のソケットとpthread（POSIXスレッド）
+オプションはありません。コンパイラオプション-DLAPACKまたは-DMKLを設定すると、
+ライブラリは高速行列計算にLAPACK / BLAS [36]またはIntel MKLを使用します。CUI
+APはANSI Cで書かれています。ライブラリおよびCUI APは多くの上に構築できます。
+Linux上のgccのような環境。GUI APはC ++で書かれていて利用する
+GUIツールキット用のEmbarcadero / Borland VCL（ビジュアルコンポーネントライブラリ）。すべての
+パッケージ内の実行可能バイナリAPは、Embarcadero C ++ビルダーXE2によって構築されました。
+Windows 7では初心者モード。
+実行可能なGUI APは、Windows 7（64ビット）でテストされています。CUI APも
+Ubuntu 11.04 Linuxおよびx86 CPU上で構築およびテストされています。
 
-Notes:
-Previous versions of RTKLIB until ver. 2.4.1 were built by a free edition of
-Borland C++ (Turbo C++ 2006). Turbo C++, however, is no longer supported in
-ver. 2.4.2 because of type incompatibility problem of GUI strings between
-ver.2.4.2 and the previous ones.
+ノート：
+RTKLIBの以前のバージョンはverまで。2.4.1はの無料版によって構築されました
+Borland C ++（Turbo C ++ 2006）。Turbo C ++は、しかし、もはやサポートされていません。
+ver。間のGUI文字列の型の非互換性の問題のために2.4.2
+ver.2.4.2以前のもの
 
---------------------------------------------------------------------------------
+-------------------------------------------------- ------------------------------
 
-LICENSE
+ライセンス
 
-The RTKLIB software package is distributed under the following BSD 2-clause
-license (http://opensource.org/licenses/BSD-2-Clause) and additional two
-exclusive clauses. Users are permitted to develop, produce or sell their own
-non-commercial or commercial products utilizing, linking or including RTKLIB as
-long as they comply with the license.
+RTKLIBソフトウェアパッケージは、次のBSD 2条項の下で配布されています。
+ライセンス（http://opensource.org/licenses/BSD-2-Clause）と追加の2つ
+排他的な句 ユーザーは自分で開発、製作、販売することが許可されています。
+としてRTKLIBを利用、リンク、または含む非商業的または商業的製品
+それらが免許証に従う限り。
 
-          Copyright (c) 2007-2013, T. Takasu, All rights reserved.
+          著作権（c）2007-2013、T.高須、無断複写・転載を禁じます。
 
-Redistribution and use in source and binary forms, with or without modification,
-are permitted provided that the following conditions are met:
+修正の有無にかかわらず、ソース形式およびバイナリ形式で再配布および使用
+次の条件が満たされていることを条件として、許可されます。
 
-- Redistributions of source code must retain the above copyright notice, this
-  list of conditions and the following disclaimer.
+- ソースコードの再配布は上記の著作権表示を保持しなければなりません、これ
+  条件のリストおよび以下の免責事項
 
-- Redistributions in binary form must reproduce the above copyright notice, this
-  list of conditions and the following disclaimer in the documentation and/or
-  other materials provided with the distribution.
+- バイナリ形式での再配布は、上記の著作権表示を複製する必要があります。
+  ドキュメント内の条件のリストおよび以下の免責事項
+  配布物と共に提供される他の資料。
 
-- The software package includes some companion executive binaries or shared
-  libraries necessary to execute APs on Windows. These licenses succeed to the
-  original ones of these software. 
+- ソフトウェアパッケージには、コンパニオンエグゼクティブバイナリが含まれているか、共有されています。
+  WindowsでAPを実行するために必要なライブラリ。これらのライセンスは
+  これらのソフトウェアのオリジナルのもの。 
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
-LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
-GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
-THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+このソフトウェアは、著作権者および配布者によって「現状のまま」提供されます。
+また、明示的または黙示的を問わず、これに限定されるものではありません。
+商品性および特定の目的への適合性に対する黙示の保証
+免責事項です。いかなる場合においても、著作権者または譲渡人は絶対にしないでください。
+直接、間接、偶発的、特別、典型的、または
+結果として生じる損害（ただし、これに限定されない、代用品の調達）
+商品またはサービス 使用、データ、または利益の喪失 または事業の中断）
+しかし、契約上の厳格さにかかわらず、一切の責任の原因および責任の理論
+一切の責任を負うこと、または不法またはその他を含む不法行為
+そのような損害の可能性がある場合は、このソフトウェアの使用。
 
-Notes:
-Previous versions of RTKLIB until ver. 2.4.1 had been distributed under GPLv3
-(http://www.gnu.org/licenses/gpl-3.0.en.html) license.
+ノート：
+RTKLIBの以前のバージョンはverまで。2.4.1はGPLv3で配布されていました
+（http://www.gnu.org/licenses/gpl-3.0.en.html）ライセンス。
 
---------------------------------------------------------------------------------
+-------------------------------------------------- ------------------------------
 
-DIRECTORY STRUCTURE OF PACKAGE
+パッケージのディレクトリ構造
 
-  rtklib_<ver>
-  ./src             source programs of RTKLIB library *
-    ./rcv           source programs depending on GPS/GNSS receivers *
-  ./bin             executable binary APs and DLLs for Windows
-  ./data            sample data for APs
-  ./app             build environment of APs *
-    ./rtknavi       RTKNAVI       (GUI) *
-    ./rtknavi_mkl   RTKNAVI_MKL   (GUI) *
-    ./strsvr        STRSVR        (GUI) *
-    ./rtkpost       RTKPOST       (GUI) *
-    ./rtkpost_mkl   RTKPOST_MKL   (GUI) *
-    ./rtkplot       RTKPLOT       (GUI) *
-    ./rtkconv       RTKCONV       (GUI) *
-    ./srctblbrows   NTRIP Browser (GUI) *
-    ./rtkget        RTKGET        (GUI) *
-    ./rtklaunch     RTKLAUNCH     (GUI) *
-    ./rtkrcv        RTKRCV        (CUI) *
-    ./rnx2rtkp      RNX2RTKP      (CUI) *
-    ./pos2kml       POS2KML       (CUI) *
-    ./convbin       CONVBIN       (CUI) *
-    ./str2str       STR2STR       (CUI) *
-    ./appcmn        common routines for GUI APs *
-    ./icon          icon data for GUI APs *
-  ./lib             library genration environment *
-  ./test            test programs and data *
-  ./util            utilities *
-  ./doc             document files
+  rtklib_ <ver>
+  RTKLIBライブラリの./srcソースプログラム*
+    GPS / GNSS受信機による./rcvソースプログラム*
+  ./bin Windows用の実行可能バイナリAPおよびDLL
+  APの./dataサンプルデータ
+  APの./appビルド環境
+    ./rtknavi RTKNAVI（GUI）*
+    ./rtknavi_mkl RTKNAVI_MKL（GUI）*
+    ./strsvr STRSVR（GUI）*
+    ./rtkpost RTKPOST（GUI）*
+    ./rtkpost_mkl RTKPOST_MKL（GUI）*
+    ./rtkplot RTKPLOT（GUI）*
+    ./rtkconv RTKCONV（GUI）*
+    ./srctblbrows NTRIPブラウザ（GUI）*
+    ./rtkget RTKGET（GUI）*
+    ./rtklaunch RTKLAUNCH（GUI）*
+    ./rtkrcv RTKRCV（CUI）*
+    ./rnx2rtkp RNX2RTKP（CUI）*
+    ./pos2kml POS2KML（CUI）*
+    ./convbin CONVBIN（CUI）*
+    ./str2str STR2STR（CUI）*
+    GUI AP用の./appcmn共通ルーチン*
+    AP用の./iconアイコンデータ*
+  ./libライブラリ生成環境*
+  ./testテストプログラムとデータ*
+  ./utilユーティリティ*
+  ./doc文書ファイル
   
-  * not included in the binary package rtklib_<ver>_bin.zip
+  *バイナリパッケージrtklib_ <ver> _bin.zipには含まれていません
 
---------------------------------------------------------------------------------
+-------------------------------------------------- ------------------------------
 
-MANUAL
+マニュアル
 
-Refer rtklib_<ver>/doc/manual_<ver>.pdf.
+rtklib_ <ver> / doc / manual_ <ver> .pdfを参照してください。
 
---------------------------------------------------------------------------------
+-------------------------------------------------- ------------------------------
 
-SUPPORT INFORMATION
+サポート情報
+http://www.rtklib.com/rtklib_support.htmを 
+参照してください。
 
-Refer http://www.rtklib.com/rtklib_support.htm.
+-------------------------------------------------- ------------------------------
 
---------------------------------------------------------------------------------
+歴史
 
-HISTORY
+  ver.1.0 2007/01/25新作リリース
+  ver.1.1 2007/03/20 rnx2rtkp_guiの追加、バグ修正、パフォーマンスの向上
+  ver.2.1.0 2008/07/15リファクタリング、アプリケーションを追加
+  ver.2.1.1 2008/10/19バグ修正
+  ver.2.2.0 2009/01/20 srcにstream.c、rtksvr.c、preceph.cを追加しました
+                          rtknavi、rtkpost_mkl、srctblbrows、strsvr、str2strをアプリに追加
+  ver.2.2.1 2009/05/17 relnotes_2.2.1.txtをご覧ください
+  ver.2.2.2 2009/09/07 relnotes_2.2.2.txtを参照してください。
+  ver.2.3.0 2009/12/17 relnotes_2.3.0.txtをご覧ください
+  ver.2.4.0 2010/08/08 relnotes_2.4.0.pdfをご覧ください
+  ver.2.4.1 2011/06/01参照relnotes_2.4.1.htm
+  ver.2.4.2 2013/04/19 relnotes_2.4.2.htmをご覧ください
 
-  ver.1.0      2007/01/25 new release
-  ver.1.1      2007/03/20 add rnx2rtkp_gui, fix bugs, improve performance
-  ver.2.1.0    2008/07/15 refactored, add applications
-  ver.2.1.1    2008/10/19 fix bugs
-  ver.2.2.0    2009/01/20 add stream.c,rtksvr.c,preceph.c in src
-                          add rtknavi,rtkpost_mkl,srctblbrows,strsvr,str2str in app
-  ver.2.2.1    2009/05/17 see relnotes_2.2.1.txt
-  ver.2.2.2    2009/09/07 see relnotes_2.2.2.txt
-  ver.2.3.0    2009/12/17 see relnotes_2.3.0.txt
-  ver.2.4.0    2010/08/08 see relnotes_2.4.0.pdf
-  ver.2.4.1    2011/06/01 see relnotes_2.4.1.htm
-  ver.2.4.2    2013/04/19 see relnotes_2.4.2.htm
+-------------------------------------------------- ------------------------------
+(ここまでgoogle翻訳による日本語訳）
 
---------------------------------------------------------------------------------
+Raspberry　Pi　でのインストール手順
+$ git clone https://github.com/mnltake/RTKLIB.git
+$ cd RTKLIB
+$ cd app
+$ chmod 755 makeall.sh
+$ ./makeall.sh
+$ cd rtkrcv/gcc/
+$ chmod 755 rtkstart.sh
+$ chmod 755 rtkshut.sh   
